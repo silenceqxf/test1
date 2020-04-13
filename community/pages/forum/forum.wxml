@@ -1,0 +1,60 @@
+<!--pages/forum/forum.wxml-->
+<scroll-view class="forum_section">
+  <view class="forumList" wx:for="{{DataSource}}">
+    <view class="body_view">
+      <view class="left_view">
+        <image class="userAvatar" src="{{avatar}}"/>
+      </view>
+      <view class="right_view">
+        <view class="nickname_view">
+          <label class="nickname">祁晓芳</label>
+        </view>
+        <!-- 内容 -->
+        <view class="content_view">
+          <text class="userContent">{{content}}</text>
+        </view>
+        <!-- 图片 -->
+        <view class="photo_view">
+          <view class="photo" wx:for="{{resource}}" style="width:{{photoWidth}}px;height:{{photoWidth}}px">
+            <image bindtap="lookPhoto" data-photoUrl="{{item}}" src="{{item}}" style="width:{{photoWidth}}px;height:{{photoWidth}}px"/>
+          </view>
+        </view>
+        <!-- 地理位置 -->
+        <view class="address_view">
+          <label>西宁市城中区南京路安昕雅苑小区6单元1楼</label>
+        </view>
+        <!-- 时间、删除按钮、点赞评论按钮 -->
+        <view class="TDD_view">
+          <label>2020-03-20 10:14:23</label>
+          <button bindtap="delete">删除</button>
+          <image data-isShow="{{isShow}}" bindtap="touchDiscuss" src="../../images/wxdiscuss.png"></image>
+        </view>
+        <!-- 点赞 -->
+        <view class="dianzan_view">
+          <view class="trigon_view">
+            <image mode="aspectFill" class="trigon" src="../../images/trigon.png"/>
+          </view>
+          <!--  点赞 -->
+          <view class="dianzan_bg_view">
+            <view class="dianzan_user_view" wx:for="{{zanSource}}">
+              <label bindtap="touchZanUser" data-name="{{item}}" class="zanUser">{{item}},</label>
+            </view>
+          </view>
+          <view class="line"></view>
+          <!-- 评论 -->
+          <view class="discuss_view">
+            <view class="discuss" wx:for="{{contnet}}">
+              <label bindtap="touchZanUser" data-name="{{item.firstname}}" class="discussUser">{{item.firstname}}:</label>
+              <label class="content">{{item.content}}</label>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+
+<!-- 评论按钮弹出框 -->
+<view animation="{{animation}}" class="popUpBox" style="top:{{popTop}}px;width:{{popWidth}}px;">
+
+</view>

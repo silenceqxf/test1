@@ -1,0 +1,50 @@
+<!--pages/second_level/clean/clean.wxml-->
+<view class="clean_section">
+  <!--顶部图片-->
+  <image class="banner" mode="aspectFill" src="../../../images/banner1.jpg" class="slide_image"/>
+  <!--筛选-->
+  <view class="choose_wrap vc">
+    <view class="choose_item cc" data-tab="1" bindtap="chooseItemClick">
+      <block wx:if="{{currentTab==1}}">
+        <text class="choose_item_label choose_item_selected" >全部</text>
+      </block>
+      <block wx:else>
+        <text class="choose_item_label" >全部</text>
+      </block>
+    </view>
+    <view class="choose_item_divider">|</view>
+    <view class="choose_item cc" data-tab="2" bindtap="chooseItemClick">
+      <block wx:if="{{currentTab==2}}">
+        <text class="choose_item_label choose_item_selected" >热门</text>
+      </block>
+      <block wx:else>
+        <text class="choose_item_label" >热门</text>
+      </block>
+    </view>
+    <view class="choose_item_divider">|</view>
+    <view class="choose_item cc" data-tab="3" bindtap="chooseItemClick">
+      <block wx:if="{{currentTab==3}}">
+        <text class="choose_item_label choose_item_selected">最新</text>
+      </block>
+      <block wx:else>
+        <text class="choose_item_label" >最新</text>
+      </block>
+    </view>
+  </view>
+
+  <!--listview数据--> 
+  <block wx:for="{{products}}" wx:for-item="product" wx:key="p_id">
+    <!--一条-->
+    <view class="list_item" data-id="{{product.p_id}}" bindtap="itemClick">
+      <view class="list_item_left"> 
+        <image class="list_item_left_icon" src="{{img220}}/{{product.p_icon}}?version={{version}}"></image>
+      </view>
+      <view class="list_item_right"> 
+        <view class="item_name cc">{{product.p_title}}</view>
+        <view class="item_desc cc">{{product.p_summary}}</view>
+        <view class="item_price cc ">￥{{product.p_priceA}}</view>
+        <view class="item_duration cc">{{product.p_duration}}分钟</view>
+      </view>
+    </view> 
+  </block>
+</view>
